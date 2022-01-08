@@ -5,6 +5,14 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 
+    private int bulletAtPoint = 1;
+
+    public int BulletAtPoint
+    {
+        get { return bulletAtPoint; }
+        set { bulletAtPoint = value; }
+    }
+
     [SerializeField] float speed;
 
     // íeÇÃè¡ñ≈éûä‘
