@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     float shotTime = 0;
     float shotDistanceTime = 0.1f;
 
+    // オブジェクトプール対応
+    [SerializeField] Transform normalBulletPool;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +76,24 @@ public class PlayerController : MonoBehaviour
     // 弾の発射
     void ShotBullet()
     {
-        Instantiate(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        //Instantiate(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+
+        GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+    }
+
+    void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in normalBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                return;
+            }
+        }
+
+        Instantiate(bulletPrefab, pos, qua, normalBulletPool);
     }
 }
