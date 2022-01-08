@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Enemy1Controller : MonoBehaviour
 {
+    private int enemyHp = 1;
+    
+    public int EnemyHp
+    {
+        get { return enemyHp; }
+        set { enemyHp = value; }
+    }
+
     bool isGate = false;
 
     float countTime = 0;
@@ -29,6 +37,12 @@ public class Enemy1Controller : MonoBehaviour
         {
             transform.position += new Vector3(xPos * Time.deltaTime, yPos * Time.deltaTime, 0);
         }
+
+        // “G‚Ì”j‰ó
+        if (EnemyHp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +50,14 @@ public class Enemy1Controller : MonoBehaviour
         if (collision.gameObject.CompareTag("Gate"))
         {
             isGate = true;
+        }
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            int at = collision.gameObject.GetComponent<BulletController>().BulletAtPoint;
+            Debug.Log(at);
+
+            EnemyHp -= at;
         }
     }
 }
