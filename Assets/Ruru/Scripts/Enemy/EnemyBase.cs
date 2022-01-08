@@ -16,6 +16,9 @@ public class EnemyBase : MonoBehaviour
 
     protected bool isGate = false;
 
+    // ドロップアイテム格納
+    [SerializeField] GameObject itemPrefab;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -29,6 +32,11 @@ public class EnemyBase : MonoBehaviour
         // 敵の破壊
         if (EnemyHp <= 0)
         {
+            // アイテムがセットされてたら、ドロップする
+            if (itemPrefab)
+            {
+                Instantiate(itemPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+            }
             gameObject.SetActive(false);
         }
     }
