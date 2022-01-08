@@ -42,4 +42,12 @@ public class BulletController : MonoBehaviour
     {
         transform.position += new Vector3(speed * Time.deltaTime, 0, 0);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+        }
+    }
 }
