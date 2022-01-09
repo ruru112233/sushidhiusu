@@ -17,7 +17,7 @@ public class EnemyBase : MonoBehaviour
     protected bool isGate = false;
 
     // ドロップアイテム格納
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] List<GameObject> itemPrefab;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -33,12 +33,20 @@ public class EnemyBase : MonoBehaviour
         if (EnemyHp <= 0)
         {
             // アイテムがセットされてたら、ドロップする
-            if (itemPrefab)
+            if (itemPrefab.Count != 0)
             {
-                Instantiate(itemPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                Instantiate(itemPrefab[RandomItemNo()], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
             }
             gameObject.SetActive(false);
         }
+    }
+
+    // アイテムリストからランダムで配列番号を設定
+    int RandomItemNo()
+    {
+        int randNo = Random.Range(0, itemPrefab.Count);
+
+        return randNo;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
