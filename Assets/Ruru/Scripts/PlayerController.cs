@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     // スプライト
     [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, ebiSprite, ikaSprite, takoSprite,
-                            hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite;
+                            hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite, syariSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -118,9 +118,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
         {
-            
+            if (spriteRenderer.sprite.name == "Syari_01")
+            {
+                Debug.Log("GameOver");
+            }
+            else
+            {
+                spriteRenderer.sprite = syariSprite;
+            }
         }
 
         if (collision.gameObject.CompareTag("Gate"))
