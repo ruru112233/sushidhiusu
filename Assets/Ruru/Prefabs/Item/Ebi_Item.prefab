@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 356681831699392685}
   m_Layer: 0
   m_Name: Ebi_Item
-  m_TagString: Untagged
+  m_TagString: Ebi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
