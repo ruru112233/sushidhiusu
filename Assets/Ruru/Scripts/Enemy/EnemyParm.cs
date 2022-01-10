@@ -31,7 +31,7 @@ public class EnemyParm : MonoBehaviour
     public GameObject bulletPrefab;
 
     // オブジェクトプール対応
-    public Transform enemyBulletPool;
+    public Transform enemyBulletPool, hotateBulletPool;
 
     // 弾の速度
     public float shotSpeed;
