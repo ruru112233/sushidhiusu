@@ -129,14 +129,34 @@ public class EnemyBase : MonoBehaviour
     // 弾の発射
     void ShotBullet()
     {
-        GetNomalBulletObj(enemyParm.bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        if (fishtype != FishType.Hotate)
+        {
+            GetNomalBulletObj(enemyParm.bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        }
+        else
+        {
+            HotateShot1(enemyParm.bulletPrefab, 
+                        new Vector3(firePoint.transform.position.x, 
+                                    firePoint.transform.position.y, 
+                                    firePoint.transform.position.z), 
+                        Quaternion.identity);
+            HotateShot2(enemyParm.bulletPrefab, 
+                        new Vector3(firePoint.transform.position.x, 
+                                    firePoint.transform.position.y, 
+                                    firePoint.transform.position.z), 
+                        Quaternion.identity);
+            HotateShot3(enemyParm.bulletPrefab, 
+                        new Vector3(firePoint.transform.position.x, 
+                                    firePoint.transform.position.y, 
+                                    firePoint.transform.position.z),
+                        Quaternion.identity);
+        }
     }
 
     void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         playerPos = GameObject.FindWithTag("Player").transform;
         float dis = Vector3.Distance(playerPos.position, pos);
-        Debug.Log(dis);
         Vector2 vec = playerPos.position - pos;
 
         foreach (Transform t in enemyParm.enemyBulletPool)
@@ -165,6 +185,70 @@ public class EnemyBase : MonoBehaviour
 
 
         //bulletBody.AddForce(transform.up * shotSpeed);
+
+    }
+
+    // ホタテの攻撃
+    void HotateShot1(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in enemyParm.hotateBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(transform.up * enemyParm.shotSpeed * 6);
+                return;
+            }
+        }
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.hotateBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(transform.up * enemyParm.shotSpeed * 6);
+
+    }
+
+    void HotateShot2(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in enemyParm.hotateBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(new Vector3(1, 1, 0) * enemyParm.shotSpeed * 6);
+                return;
+            }
+        }
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.hotateBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(new Vector3(1, 1, 0) * enemyParm.shotSpeed * 6);
+
+    }
+
+    void HotateShot3(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in enemyParm.hotateBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(new Vector3(-1, 1, 0) * enemyParm.shotSpeed * 6);
+                return;
+            }
+        }
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.hotateBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(new Vector3(-1, 1, 0) * enemyParm.shotSpeed * 6);
 
     }
 
