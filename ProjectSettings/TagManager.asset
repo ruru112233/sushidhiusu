@@ -15,6 +15,7 @@ TagManager:
   - Ebi
   - Salmon
   - EnemyBullet
+  - BackGround
   layers:
   - Default
   - TransparentFX

@@ -28,10 +28,10 @@ public class EnemyParm : MonoBehaviour
     public Transform dropItemPool;
 
     // 敵の弾
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab, sumiBullet;
 
     // オブジェクトプール対応
-    public Transform enemyBulletPool, hotateBulletPool;
+    public Transform enemyBulletPool, hotateBulletPool, sumiBulletPool;
 
     // 弾の速度
     public float shotSpeed;
