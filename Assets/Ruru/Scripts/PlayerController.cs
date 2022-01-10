@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     // 弾の発射間隔
     float shotTime = 0;
-    float shotDistanceTime = 0.1f;
+    float shotDistanceTime = 0.3f;
 
     // オブジェクトプール対応
     [SerializeField] Transform normalBulletPool;
