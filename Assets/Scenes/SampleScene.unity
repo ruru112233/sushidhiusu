@@ -658,6 +658,7 @@ MonoBehaviour:
   taiSprite: {fileID: 0}
   kyuuriSprite: {fileID: 0}
   nattoSprite: {fileID: 0}
+  syariSprite: {fileID: 21300000, guid: b0f636a6e874f48818468c0b2c81c5b1, type: 3}
 --- !u!212 &164322855
 SpriteRenderer:
   m_ObjectHideFlags: 0
