@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,13 +20,22 @@ public class PlayerController : MonoBehaviour
     // オブジェクトプール対応
     [SerializeField] Transform normalBulletPool;
 
+    // プレイヤーのスプライト
+    SpriteRenderer spriteRenderer;
+
     // ゲームオーバー
     bool gameOverFlag = false;
+
+    // スプライト
+    [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, ebiSprite, ikaSprite, takoSprite,
+                            hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         shotTime = 0;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -117,5 +127,54 @@ public class PlayerController : MonoBehaviour
         {
             gameOverFlag = true;
         }
+
+        ChengeSprite(collision.gameObject);
+    }
+
+    // Sprite変更
+    void ChengeSprite(GameObject obj)
+    {
+        
+        switch (obj.tag)
+        {
+            case "Maguro":
+                spriteRenderer.sprite = maguroSprite;
+                break;
+            case "Ikura":
+                spriteRenderer.sprite = ikuraSprite;
+                break;
+            case "Tamago":
+                spriteRenderer.sprite = tamagoSprite;
+                break;
+            case "Salmon":
+                spriteRenderer.sprite = salmonSprite;
+                break;
+            case "Ebi":
+                spriteRenderer.sprite = ebiSprite;
+                break;
+            case "Ika":
+                spriteRenderer.sprite = ikaSprite;
+                break;
+            case "Tako":
+                spriteRenderer.sprite = takoSprite;
+                break;
+            case "Hotate":
+                spriteRenderer.sprite = hotateSprite;
+                break;
+            case "Uni":
+                spriteRenderer.sprite = uniSprite;
+                break;
+            case "Tai":
+                spriteRenderer.sprite = taiSprite;
+                break;
+            case "Kyuuri":
+                spriteRenderer.sprite = kyuuriSprite;
+                break;
+            case "Natto":
+                spriteRenderer.sprite = nattoSprite;
+                break;
+
+        }
+
     }
 }

@@ -575,6 +575,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 493787931875497783, guid: 83d6a76501c6ee8478e01686cf9cdd4f, type: 3}
   firePoint: {fileID: 844898102}
   normalBulletPool: {fileID: 953289118}
+  maguroSprite: {fileID: 21300000, guid: 3b513eccd26ae4b2187e26715c2f7b09, type: 3}
+  ikuraSprite: {fileID: 21300000, guid: 63b032b50c7514057b5874b2a714a281, type: 3}
+  salmonSprite: {fileID: 21300000, guid: d3cd6f703489744ef9da0eb8013b3455, type: 3}
+  tamagoSprite: {fileID: 21300000, guid: e8cf9cbfbffea487389f858223e98972, type: 3}
+  ebiSprite: {fileID: 21300000, guid: ca12f9c84abd94f0c97d1e741e2b2e4c, type: 3}
+  ikaSprite: {fileID: 0}
+  takoSprite: {fileID: 0}
+  hotateSprite: {fileID: 0}
+  uniSprite: {fileID: 0}
+  taiSprite: {fileID: 0}
+  kyuuriSprite: {fileID: 0}
+  nattoSprite: {fileID: 0}
 --- !u!212 &164322855
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -615,7 +627,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3b513eccd26ae4b2187e26715c2f7b09, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0f636a6e874f48818468c0b2c81c5b1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -651,10 +663,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.006777197, y: -0.08810353}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -665,7 +677,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.71535796, y: 0.49848795}
   m_EdgeRadius: 0
 --- !u!50 &164322858
 Rigidbody2D:
@@ -7939,7 +7951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &12340036775329675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8687,7 +8699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -8826,7 +8838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -8925,7 +8937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -9133,7 +9145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -9202,7 +9214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3000472051166759819
 Transform:
   m_ObjectHideFlags: 0

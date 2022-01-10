@@ -9,6 +9,11 @@ TagManager:
   - Enemy
   - DropItemPool
   - EnemyParm
+  - Maguro
+  - Ikura
+  - Tamago
+  - Ebi
+  - Salmon
   layers:
   - Default
   - TransparentFX

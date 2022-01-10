@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4090232826186729268}
   m_Layer: 0
   m_Name: Saimon_Item
-  m_TagString: Untagged
+  m_TagString: Salmon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
