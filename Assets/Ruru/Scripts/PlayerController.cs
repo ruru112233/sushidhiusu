@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     // オブジェクトプール対応
     [SerializeField] Transform normalBulletPool;
 
+    // ゲームオーバー
+    bool gameOverFlag = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,12 @@ public class PlayerController : MonoBehaviour
             {
                 shotTime = 0;
             }
+        }
+
+        // ゲームオーバーになった時の処理
+        if (gameOverFlag)
+        {
+
         }
     }
 
@@ -95,5 +104,18 @@ public class PlayerController : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, pos, qua, normalBulletPool);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            
+        }
+
+        if (collision.gameObject.CompareTag("Gate"))
+        {
+            gameOverFlag = true;
+        }
     }
 }
