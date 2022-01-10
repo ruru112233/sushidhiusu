@@ -4453,6 +4453,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8617150113914657703, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   m_PrefabInstance: {fileID: 131759560}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1075156508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075156509}
+  - component: {fileID: 1075156510}
+  m_Layer: 0
+  m_Name: EnemyParm
+  m_TagString: EnemyParm
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075156509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075156508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.1816053, y: -0.3970132, z: -4.770336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075156510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075156508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0c5d61fe36f5841a4795230edf82f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maguroInitHp: 1
+  ikuraInitHp: 1
+  tamagoInitHp: 1
+  salmonInitHp: 1
+  ebiInitHp: 1
+  ikaInitHp: 1
+  takoInitHp: 1
+  hotateInitHp: 1
+  uniInitHp: 1
+  taiInitHp: 1
+  kyuuriInitHp: 1
+  nattoInitHp: 1
+  maguroItemPrefab:
+  - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
+  ikuraItemPrefab: []
+  tamagoItemPrefab: []
+  salmonItemPrefab:
+  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
+  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  ebiItemPrefab: []
+  ikaItemPrefab: []
+  takoItemPrefab: []
+  hotateItemPrefab: []
+  uniItemPrefab: []
+  taiItemPrefab: []
+  kyuuriItemPrefab: []
+  nattoItemPrefab: []
+  dropItemPool: {fileID: 145153842}
+  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
+  enemyBulletPool: {fileID: 632396311}
+  shotSpeed: 15
+  shotTime: 4
 --- !u!1001 &1093943221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7826,13 +7901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -7938,7 +8009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &12340036775329675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8018,15 +8089,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab:
-  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
-  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -8143,13 +8208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -8266,15 +8327,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab:
-  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
-  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -8411,15 +8466,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab:
-  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
-  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -8516,13 +8565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 10
-  shotTime: 0
+  enemyParm: {fileID: 0}
+  fishtype: 3
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -8710,13 +8755,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 0
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -8853,13 +8894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 0
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -8956,14 +8993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab:
-  - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 0
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -9080,13 +9112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -9173,13 +9201,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab: []
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 0
   distanceTime: 5
   xPos: 4
   yPos: -2
@@ -9362,14 +9386,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e00fee6e238347bfe409bd3731524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHp: 1
-  itemPrefab:
-  - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
-  dropItemPool: {fileID: 0}
-  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
-  enemyBulletPool: {fileID: 632396311}
-  shotSpeed: 30
-  shotTime: 3
+  enemyParm: {fileID: 0}
+  fishtype: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: -2
