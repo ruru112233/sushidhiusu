@@ -4437,12 +4437,15 @@ MonoBehaviour:
   nattoInitHp: 1
   maguroItemPrefab:
   - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
-  ikuraItemPrefab: []
-  tamagoItemPrefab: []
+  ikuraItemPrefab:
+  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
+  tamagoItemPrefab:
+  - {fileID: 7403780343126846730, guid: 565464fd9733f0f4d91ad0225c4a7f2a, type: 3}
   salmonItemPrefab:
   - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
   - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
-  ebiItemPrefab: []
+  ebiItemPrefab:
+  - {fileID: 7606517927379001253, guid: 640bbe0d739da74448bea7abecd2ac73, type: 3}
   ikaItemPrefab: []
   takoItemPrefab: []
   hotateItemPrefab: []
