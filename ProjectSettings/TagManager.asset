@@ -7,6 +7,7 @@ TagManager:
   - Gate
   - Bullet
   - Enemy
+  - DropItemPool
   layers:
   - Default
   - TransparentFX

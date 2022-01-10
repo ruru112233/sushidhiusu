@@ -18,6 +18,7 @@ public class EnemyBase : MonoBehaviour
 
     // ドロップアイテム格納
     [SerializeField] List<GameObject> itemPrefab;
+    [SerializeField] Transform dropItemPool;
 
     // 敵の弾
     [SerializeField] GameObject bulletPrefab;
@@ -46,6 +47,7 @@ public class EnemyBase : MonoBehaviour
 
         firePoint = this.gameObject;
 
+        dropItemPool = GameObject.FindWithTag("DropItemPool").transform;
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class EnemyBase : MonoBehaviour
             // アイテムがセットされてたら、ドロップする
             if (itemPrefab.Count != 0)
             {
-                Instantiate(itemPrefab[RandomItemNo()], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                Instantiate(itemPrefab[RandomItemNo()], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, dropItemPool);
             }
             gameObject.SetActive(false);
         }

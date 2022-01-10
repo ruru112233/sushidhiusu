@@ -385,6 +385,36 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
+--- !u!1 &145153841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145153842}
+  m_Layer: 0
+  m_Name: DropItem
+  m_TagString: DropItemPool
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145153842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145153841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 848719710}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &150318964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1186,12 +1216,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299023892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.72, y: -0.87, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.580063, y: -2.2956948, z: 4.1590457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1865569545}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &336048755 stripped
 Transform:
@@ -2448,12 +2478,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 575637051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.85, y: -0.87, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.989937, y: -2.2956948, z: 4.1590457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1865569545}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &579532685
 PrefabInstance:
@@ -3581,6 +3611,7 @@ Transform:
   - {fileID: 283341083}
   - {fileID: 3000472051166759819}
   - {fileID: 12340036045006686}
+  - {fileID: 145153842}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3749,11 +3780,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880716150}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.4, y: -8.64, z: 0}
+  m_LocalPosition: {x: 0.26006302, y: -10.065695, z: 4.1590457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1865569545}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &887147577
 PrefabInstance:
@@ -4303,12 +4334,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969429032}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 2.14, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.26006302, y: 0.71430516, z: 4.1590457}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1865569545}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &986567286 stripped
 Transform:
@@ -6783,6 +6814,40 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
+--- !u!1 &1865569544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1865569545}
+  m_Layer: 0
+  m_Name: GateObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1865569545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865569544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.13993698, y: 1.425695, z: -4.1590457}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 299023895}
+  - {fileID: 575637054}
+  - {fileID: 969429035}
+  - {fileID: 880716153}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1869635827
 GameObject:
   m_ObjectHideFlags: 0
@@ -7507,7 +7572,7 @@ Transform:
   - {fileID: 1935020352}
   - {fileID: 1906311353}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069503636
 GameObject:
@@ -7763,6 +7828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -7956,6 +8022,7 @@ MonoBehaviour:
   itemPrefab:
   - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
   - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -8078,6 +8145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -8202,6 +8270,7 @@ MonoBehaviour:
   itemPrefab:
   - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
   - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -8346,6 +8415,7 @@ MonoBehaviour:
   itemPrefab:
   - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
   - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -8448,6 +8518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 10
@@ -8641,6 +8712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
@@ -8783,6 +8855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
@@ -8886,6 +8959,7 @@ MonoBehaviour:
   initHp: 1
   itemPrefab:
   - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
@@ -9008,6 +9082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
@@ -9100,6 +9175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initHp: 1
   itemPrefab: []
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
@@ -9289,6 +9365,7 @@ MonoBehaviour:
   initHp: 1
   itemPrefab:
   - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
+  dropItemPool: {fileID: 0}
   bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
   enemyBulletPool: {fileID: 632396311}
   shotSpeed: 30
