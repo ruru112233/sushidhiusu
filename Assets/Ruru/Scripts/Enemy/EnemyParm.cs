@@ -16,7 +16,7 @@ public class EnemyParm : MonoBehaviour
     public int taiInitHp = 1;
     public int kyuuriInitHp = 1;
     public int nattoInitHp = 1;
-
+    public int bossInitHp = 1;
 
     // ドロップアイテム格納
     public List<GameObject> maguroItemPrefab,ikuraItemPrefab,
@@ -28,10 +28,10 @@ public class EnemyParm : MonoBehaviour
     public Transform dropItemPool;
 
     // 敵の弾
-    public GameObject bulletPrefab, sumiBullet;
+    public GameObject bulletPrefab, sumiBullet, ikaBullet;
 
     // オブジェクトプール対応
-    public Transform enemyBulletPool, hotateBulletPool, sumiBulletPool;
+    public Transform enemyBulletPool, hotateBulletPool, sumiBulletPool, ikaBulletPool;
 
     // 弾の速度
     public float shotSpeed;
