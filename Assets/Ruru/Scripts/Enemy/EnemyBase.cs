@@ -63,6 +63,11 @@ public class EnemyBase : MonoBehaviour
 
         firePoint = this.gameObject;
 
+        if (fishtype == FishType.Ika)
+        {
+            isGate = true;
+        }
+
     }
 
     // Update is called once per frame
@@ -80,7 +85,12 @@ public class EnemyBase : MonoBehaviour
                     Instantiate(GetDropItemList(fishtype)[RandomItemNo()], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, enemyParm.dropItemPool);
                 }
             }
-            
+
+            if (fishtype == FishType.Ika)
+            {
+                EnemyHp = GetEnemyHp(fishtype);
+            }
+
             gameObject.SetActive(false);
         }
 
@@ -89,6 +99,13 @@ public class EnemyBase : MonoBehaviour
             if (fishtype == FishType.Boss)
             {
                 StartCoroutine(StopBack());
+            }
+            else if (fishtype == FishType.Ika)
+            {
+                if (shotCurrentTime == 0)
+                { 
+                    SumiShot(enemyParm.sumiBullet, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+                }
             }
             else
             {
@@ -172,6 +189,33 @@ public class EnemyBase : MonoBehaviour
                                     firePoint.transform.position.z),
                         Quaternion.identity);
         }
+    }
+
+    // スミ攻撃
+    void SumiShot(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        playerPos = GameObject.FindWithTag("Player").transform;
+        float dis = Vector3.Distance(playerPos.position, pos);
+        Vector2 vec = playerPos.position - pos;
+
+
+        foreach (Transform t in enemyParm.sumiBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
+                return;
+            }
+        }
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.sumiBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
+
     }
 
     void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
@@ -315,6 +359,9 @@ public class EnemyBase : MonoBehaviour
                 break;
             case FishType.Natto:
                 hp = enemyParm.nattoInitHp;
+                break;
+            case FishType.Boss:
+                hp = enemyParm.bossInitHp;
                 break;
 
         }
