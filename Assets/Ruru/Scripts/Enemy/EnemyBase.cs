@@ -30,6 +30,7 @@ public class EnemyBase : MonoBehaviour
         Tai,
         Kyuuri,
         Natto,
+        Boss,
     }
 
     public enum FishDrop
@@ -43,11 +44,11 @@ public class EnemyBase : MonoBehaviour
 
     
     // 弾の発射位置
-    GameObject firePoint;
+    protected GameObject firePoint;
 
 
     // 弾の発射間隔
-    float shotCurrentTime = 0;
+    protected float shotCurrentTime = 0;
 
     // プレイヤーの位置取得
     private Transform playerPos;
@@ -85,10 +86,17 @@ public class EnemyBase : MonoBehaviour
 
         if (isGate)
         {
-            // 弾の発射
-            if (shotCurrentTime == 0)
+            if (fishtype == FishType.Boss)
             {
-                ShotBullet();
+                StartCoroutine(StopBack());
+            }
+            else
+            {
+                // 弾の発射
+                if (shotCurrentTime == 0)
+                {
+                    ShotBullet();
+                }
             }
 
             shotCurrentTime += Time.deltaTime;
@@ -98,7 +106,20 @@ public class EnemyBase : MonoBehaviour
                 shotCurrentTime = 0;
             }
         }
+
+    }
+
+    IEnumerator StopBack()
+    {
+        GameObject[] backGrounds = GameObject.FindGameObjectsWithTag("BackGround");
         
+        yield return new WaitForSeconds(2);
+
+        foreach (GameObject back in backGrounds)
+        {
+            BackGroundMove b = back.GetComponent<BackGroundMove>();
+            b.speed = 0;
+        }
     }
 
     // アイテムリストからランダムで配列番号を設定
