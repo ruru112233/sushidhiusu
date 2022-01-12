@@ -53,10 +53,16 @@ public class EnemyBase : MonoBehaviour
     // プレイヤーの位置取得
     private Transform playerPos;
 
+    Animator anime;
+
+    bool dropFlag = false;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
         enemyParm = GameObject.FindWithTag("EnemyParm").GetComponent<EnemyParm>();
+
+        anime = GetComponent<Animator>();
 
         isGate = false;
         EnemyHp = GetEnemyHp(fishtype);
@@ -80,8 +86,9 @@ public class EnemyBase : MonoBehaviour
             if (fishDrop == FishDrop.Drop)
             {
                 // アイテムがセットされてたら、ドロップする
-                if (GetDropItemList(fishtype).Count != 0)
+                if (GetDropItemList(fishtype).Count != 0 && !dropFlag)
                 {
+                    dropFlag = true;
                     Instantiate(GetDropItemList(fishtype)[RandomItemNo()], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, enemyParm.dropItemPool);
                 }
             }
@@ -91,7 +98,10 @@ public class EnemyBase : MonoBehaviour
                 EnemyHp = GetEnemyHp(fishtype);
             }
 
-            gameObject.SetActive(false);
+            anime.SetTrigger("Destroy");
+
+            StartCoroutine(EnemyDestroy());
+
         }
 
         if (isGate)
@@ -123,6 +133,14 @@ public class EnemyBase : MonoBehaviour
                 shotCurrentTime = 0;
             }
         }
+
+    }
+
+    IEnumerator EnemyDestroy()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        gameObject.SetActive(false);
 
     }
 

@@ -1005,7 +1005,7 @@ MonoBehaviour:
   ebiSprite: {fileID: 21300000, guid: ca12f9c84abd94f0c97d1e741e2b2e4c, type: 3}
   ikaSprite: {fileID: 0}
   takoSprite: {fileID: 0}
-  hotateSprite: {fileID: 0}
+  hotateSprite: {fileID: 21300000, guid: b0f636a6e874f48818468c0b2c81c5b1, type: 3}
   uniSprite: {fileID: 0}
   taiSprite: {fileID: 0}
   kyuuriSprite: {fileID: 0}
@@ -3534,7 +3534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3386425047760755588, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425047760755590, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3542,7 +3542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386425048051729269, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425048051729271, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3602,7 +3602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386425048513821572, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425048513821574, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3610,7 +3610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049341053013, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049341053015, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3618,7 +3618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049420611756, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049420611758, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3626,7 +3626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049447811980, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: fishDrop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3386425049447811982, guid: 4856e7552dcdcbc4881173ffc5f63e44, type: 3}
       propertyPath: m_LocalPosition.x
