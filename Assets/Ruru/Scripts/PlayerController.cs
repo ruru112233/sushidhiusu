@@ -101,10 +101,13 @@ public class PlayerController : MonoBehaviour
         {
             GetIkuraBulletObj(ikuraBulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
         }
+        else if (spriteRenderer.sprite.name == hotateSprite.name)
+        {
+            HotateShot();
+        }
         else
         {
-            //GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
-            HotateShot();
+            GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
         }
     }
 
