@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     // 弾のプレハブ
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab;
 
     // 弾の発射位置
     [SerializeField] GameObject firePoint;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     float shotDistanceTime = 0.3f;
 
     // オブジェクトプール対応
-    [SerializeField] Transform normalBulletPool;
+    [SerializeField] Transform normalBulletPool, ikuraBulletPool;
 
     // プレイヤーのスプライト
     SpriteRenderer spriteRenderer;
@@ -97,9 +97,17 @@ public class PlayerController : MonoBehaviour
     {
         //Instantiate(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
 
-        GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        if (spriteRenderer.sprite.name == ikuraSprite.name)
+        {
+            GetIkuraBulletObj(ikuraBulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        }
+        else
+        {
+            GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+        }
     }
 
+    // シャリ時の攻撃
     void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in normalBulletPool)
@@ -107,6 +115,7 @@ public class PlayerController : MonoBehaviour
             // 弾が非アクティブなら使いまわし
             if (!t.gameObject.activeSelf)
             {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
                 t.SetPositionAndRotation(pos, qua);
                 t.gameObject.SetActive(true);
                 return;
@@ -114,6 +123,24 @@ public class PlayerController : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, pos, qua, normalBulletPool);
+    }
+
+    // いくら軍艦時の攻撃
+    void GetIkuraBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in ikuraBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 3;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                return;
+            }
+        }
+
+        Instantiate(bulletPrefab, pos, qua, ikuraBulletPool);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
