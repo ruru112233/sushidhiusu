@@ -21,6 +21,9 @@ public class BulletController : MonoBehaviour
         set { speed = value; }
     }
 
+    SpriteRenderer spriteRenderer;
+    string spriteName;
+
     // íeÇÃè¡ñ≈éûä‘
     float countTime = 0;
     float delTime = 2.0f;
@@ -29,6 +32,9 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         countTime = 0;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteName = spriteRenderer.sprite.name;
     }
 
     // Update is called once per frame
@@ -51,9 +57,12 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (spriteName != "Ebi_Shot")
         {
-            gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }
