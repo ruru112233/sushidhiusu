@@ -15,6 +15,12 @@ public class BulletController : MonoBehaviour
 
     [SerializeField] float speed;
 
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
+    }
+
     // ’e‚ÌÁ–ÅŠÔ
     float countTime = 0;
     float delTime = 2.0f;

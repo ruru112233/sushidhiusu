@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+            //GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+            HotateShot();
         }
     }
 
@@ -141,6 +142,53 @@ public class PlayerController : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, pos, qua, ikuraBulletPool);
+    }
+
+    // ホタテの攻撃
+    void HotateShot()
+    {
+        HotateBulletObj(bulletPrefab, 
+                        new Vector3(firePoint.transform.position.x, 
+                                    firePoint.transform.position.y, 
+                                    firePoint.transform.position.z), 
+                        Quaternion.identity, 
+                        new Vector3(1,1,0));
+        HotateBulletObj(bulletPrefab,
+                        new Vector3(firePoint.transform.position.x,
+                                    firePoint.transform.position.y,
+                                    firePoint.transform.position.z),
+                        Quaternion.identity,
+                        new Vector3(1.3f, 0, 0));
+        HotateBulletObj(bulletPrefab,
+                        new Vector3(firePoint.transform.position.x,
+                                    firePoint.transform.position.y,
+                                    firePoint.transform.position.z),
+                        Quaternion.identity,
+                        new Vector3(1, -1, 0));
+    }
+
+    void HotateBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua, Vector3 shotPos)
+    {
+
+        foreach (Transform t in normalBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
+                t.gameObject.GetComponent<BulletController>().Speed = 0;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(shotPos * 200);
+                return;
+            }
+        }
+
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, normalBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(shotPos * 200);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
