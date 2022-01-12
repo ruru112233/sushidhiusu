@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     // ゲームオーバー
     bool gameOverFlag = false;
 
+    Animator anime;
+
     // スプライト
     [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, ebiSprite, ikaSprite, takoSprite,
                             hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite, syariSprite;
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
         shotTime = 0;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        anime = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -101,6 +105,10 @@ public class PlayerController : MonoBehaviour
         {
             GetIkuraBulletObj(ikuraBulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
         }
+        else if (spriteRenderer.sprite.name == hotateSprite.name)
+        {
+            HotateShot();
+        }
         else
         {
             GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
@@ -143,6 +151,53 @@ public class PlayerController : MonoBehaviour
         Instantiate(bulletPrefab, pos, qua, ikuraBulletPool);
     }
 
+    // ホタテの攻撃
+    void HotateShot()
+    {
+        HotateBulletObj(bulletPrefab, 
+                        new Vector3(firePoint.transform.position.x, 
+                                    firePoint.transform.position.y, 
+                                    firePoint.transform.position.z), 
+                        Quaternion.identity, 
+                        new Vector3(1,1,0));
+        HotateBulletObj(bulletPrefab,
+                        new Vector3(firePoint.transform.position.x,
+                                    firePoint.transform.position.y,
+                                    firePoint.transform.position.z),
+                        Quaternion.identity,
+                        new Vector3(1.3f, 0, 0));
+        HotateBulletObj(bulletPrefab,
+                        new Vector3(firePoint.transform.position.x,
+                                    firePoint.transform.position.y,
+                                    firePoint.transform.position.z),
+                        Quaternion.identity,
+                        new Vector3(1, -1, 0));
+    }
+
+    void HotateBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua, Vector3 shotPos)
+    {
+
+        foreach (Transform t in normalBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
+                t.gameObject.GetComponent<BulletController>().Speed = 0;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(shotPos * 200);
+                return;
+            }
+        }
+
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, normalBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(shotPos * 200);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
@@ -154,6 +209,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                anime.enabled = true;
+                anime.SetTrigger("Damege");
                 spriteRenderer.sprite = syariSprite;
             }
         }
@@ -174,39 +231,51 @@ public class PlayerController : MonoBehaviour
         {
             case "Maguro":
                 spriteRenderer.sprite = maguroSprite;
+                anime.enabled = false;
                 break;
             case "Ikura":
                 spriteRenderer.sprite = ikuraSprite;
+                anime.enabled = false;
                 break;
             case "Tamago":
                 spriteRenderer.sprite = tamagoSprite;
+                anime.enabled = false;
                 break;
             case "Salmon":
                 spriteRenderer.sprite = salmonSprite;
+                anime.enabled = false;
                 break;
             case "Ebi":
                 spriteRenderer.sprite = ebiSprite;
+                anime.enabled = false;
                 break;
             case "Ika":
                 spriteRenderer.sprite = ikaSprite;
+                anime.enabled = false;
                 break;
             case "Tako":
                 spriteRenderer.sprite = takoSprite;
+                anime.enabled = false;
                 break;
             case "Hotate":
                 spriteRenderer.sprite = hotateSprite;
+                anime.enabled = false;
                 break;
             case "Uni":
                 spriteRenderer.sprite = uniSprite;
+                anime.enabled = false;
                 break;
             case "Tai":
                 spriteRenderer.sprite = taiSprite;
+                anime.enabled = false;
                 break;
             case "Kyuuri":
                 spriteRenderer.sprite = kyuuriSprite;
+                anime.enabled = false;
                 break;
             case "Natto":
                 spriteRenderer.sprite = nattoSprite;
+                anime.enabled = false;
                 break;
             case "Syouyusashi":
                 GameManager.instance.syouyusashiCtr.getSyouyuPoint++;
