@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     // ゲームオーバー
     bool gameOverFlag = false;
 
+    Animator anime;
+
     // スプライト
     [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, ebiSprite, ikaSprite, takoSprite,
                             hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite, syariSprite;
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
         shotTime = 0;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        anime = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -205,6 +209,8 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                anime.enabled = true;
+                anime.SetTrigger("Damege");
                 spriteRenderer.sprite = syariSprite;
             }
         }
@@ -225,39 +231,51 @@ public class PlayerController : MonoBehaviour
         {
             case "Maguro":
                 spriteRenderer.sprite = maguroSprite;
+                anime.enabled = false;
                 break;
             case "Ikura":
                 spriteRenderer.sprite = ikuraSprite;
+                anime.enabled = false;
                 break;
             case "Tamago":
                 spriteRenderer.sprite = tamagoSprite;
+                anime.enabled = false;
                 break;
             case "Salmon":
                 spriteRenderer.sprite = salmonSprite;
+                anime.enabled = false;
                 break;
             case "Ebi":
                 spriteRenderer.sprite = ebiSprite;
+                anime.enabled = false;
                 break;
             case "Ika":
                 spriteRenderer.sprite = ikaSprite;
+                anime.enabled = false;
                 break;
             case "Tako":
                 spriteRenderer.sprite = takoSprite;
+                anime.enabled = false;
                 break;
             case "Hotate":
                 spriteRenderer.sprite = hotateSprite;
+                anime.enabled = false;
                 break;
             case "Uni":
                 spriteRenderer.sprite = uniSprite;
+                anime.enabled = false;
                 break;
             case "Tai":
                 spriteRenderer.sprite = taiSprite;
+                anime.enabled = false;
                 break;
             case "Kyuuri":
                 spriteRenderer.sprite = kyuuriSprite;
+                anime.enabled = false;
                 break;
             case "Natto":
                 spriteRenderer.sprite = nattoSprite;
+                anime.enabled = false;
                 break;
             case "Syouyusashi":
                 GameManager.instance.syouyusashiCtr.getSyouyuPoint++;
