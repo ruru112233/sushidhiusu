@@ -17,6 +17,7 @@ TagManager:
   - EnemyBullet
   - BackGround
   - Iwa
+  - SyouyuPool
   layers:
   - Default
   - TransparentFX
