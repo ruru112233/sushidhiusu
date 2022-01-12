@@ -208,6 +208,10 @@ public class PlayerController : MonoBehaviour
             case "Natto":
                 spriteRenderer.sprite = nattoSprite;
                 break;
+            case "Syouyusashi":
+                GameManager.instance.syouyusashiCtr.getSyouyuPoint++;
+                break;
+
 
         }
 
