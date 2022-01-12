@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     // 弾のプレハブ
-    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab;
+    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab;
 
     // 弾の発射位置
     [SerializeField] GameObject firePoint;
@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     float shotDistanceTime = 0.3f;
 
     // オブジェクトプール対応
-    [SerializeField] Transform normalBulletPool, ikuraBulletPool;
+    [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool;
 
     // プレイヤーのスプライト
     SpriteRenderer spriteRenderer;
@@ -154,19 +154,19 @@ public class PlayerController : MonoBehaviour
     // ホタテの攻撃
     void HotateShot()
     {
-        HotateBulletObj(bulletPrefab, 
+        HotateBulletObj(hotateBulletPrefab, 
                         new Vector3(firePoint.transform.position.x, 
                                     firePoint.transform.position.y, 
                                     firePoint.transform.position.z), 
                         Quaternion.identity, 
                         new Vector3(1,1,0));
-        HotateBulletObj(bulletPrefab,
+        HotateBulletObj(hotateBulletPrefab,
                         new Vector3(firePoint.transform.position.x,
                                     firePoint.transform.position.y,
                                     firePoint.transform.position.z),
                         Quaternion.identity,
                         new Vector3(1.3f, 0, 0));
-        HotateBulletObj(bulletPrefab,
+        HotateBulletObj(hotateBulletPrefab,
                         new Vector3(firePoint.transform.position.x,
                                     firePoint.transform.position.y,
                                     firePoint.transform.position.z),
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
     void HotateBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua, Vector3 shotPos)
     {
 
-        foreach (Transform t in normalBulletPool)
+        foreach (Transform t in hotateBulletPool)
         {
             // 弾が非アクティブなら使いまわし
             if (!t.gameObject.activeSelf)
@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, normalBulletPool);
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, hotateBulletPool);
         Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
         bulletBody.AddForce(shotPos * 200);
     }
