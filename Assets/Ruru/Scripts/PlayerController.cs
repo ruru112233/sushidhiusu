@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         // ゲームオーバーになった時の処理
         if (gameOverFlag)
         {
-
+            Debug.Log("GameOver");
         }
     }
 
@@ -149,7 +149,8 @@ public class PlayerController : MonoBehaviour
         {
             if (spriteRenderer.sprite.name == "Syari_01")
             {
-                Debug.Log("GameOver");
+
+                gameOverFlag = true;
             }
             else
             {
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("Gate"))
+        if (collision.gameObject.CompareTag("Gate") || collision.gameObject.CompareTag("Iwa"))
         {
             gameOverFlag = true;
         }

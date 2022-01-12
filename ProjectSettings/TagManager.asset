@@ -16,6 +16,7 @@ TagManager:
   - Salmon
   - EnemyBullet
   - BackGround
+  - Iwa
   layers:
   - Default
   - TransparentFX
