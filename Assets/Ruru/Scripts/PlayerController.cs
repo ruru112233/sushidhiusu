@@ -5,32 +5,37 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    //kuwapon tsuika
+    public GameObject gameoverText;
+    public GameObject retryText;
+    public GameObject returnTittleText;
+
     [SerializeField] float speed;
 
-    // 弾のプレハブ
+    // ?e???v???n?u
     [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab, maguroBulletPrefab,
                                 salmonBulletPrefab, ebiBulletPrefab;
 
-    // 弾の発射位置
+    // ?e?????????u
     [SerializeField] GameObject firePoint, firePoint2, firePoint3;
 
-    // 弾の発射間隔
+    // ?e?????????u
     float shotTime = 0;
     float shotDistanceTime = 0.3f;
 
-    // オブジェクトプール対応
+    // ?I?u?W?F?N?g?v?[??????
     [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool, maguroBulletPool,
                                salmonBulletPool, ebiBulletPool;
 
-    // プレイヤーのスプライト
+    // ?v???C???[???X?v???C?g
     SpriteRenderer spriteRenderer;
 
-    // ゲームオーバー
+    // ?Q?[???I?[?o?[
     bool gameOverFlag = false;
 
     Animator anime;
 
-    // スプライト
+    // ?X?v???C?g
     [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, tamagoNorinashiSprite, ebiSprite, ikaSprite, takoSprite,
                             hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite, syariSprite;
 
@@ -68,11 +73,16 @@ public class PlayerController : MonoBehaviour
             shotTime = 0;
         }
 
-        // ゲームオーバーになった時の処理
+        // ?Q?[???I?[?o?[????????????????
         if (gameOverFlag)
         {
+            anime.enabled = true;
+            AudioManager.instance.PlayBGM(7);
+            GameOver();
             Debug.Log("GameOver");
-            gameObject.SetActive(false);
+            Death();
+            //Invoke("Death",0.5f);
+
         }
     }
 
@@ -81,7 +91,7 @@ public class PlayerController : MonoBehaviour
         PlayerMove();
     }
 
-    // キャラクターの移動
+    // ?L?????N?^?[??????
     void PlayerMove()
     {
         if (Input.GetKey(KeyCode.UpArrow))
@@ -105,14 +115,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 弾の発射
+    // ?e??????
     void ShotBullet()
     {
         //Instantiate(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
 
         if (spriteRenderer.sprite.name == ikuraSprite.name)
         {
-            // いくら
+            // ??????
             GetIkuraBulletObj(ikuraBulletPrefab, 
                               new Vector3(firePoint.transform.position.x, 
                                           firePoint.transform.position.y, 
@@ -121,12 +131,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (spriteRenderer.sprite.name == hotateSprite.name)
         {
-            // ホタテ
+            // ?z?^?e
             HotateShot();
         }
         else if (spriteRenderer.sprite.name == maguroSprite.name)
         {
-            // マグロ
+            // ?}?O??
             MaguroBulletObj(maguroBulletPrefab, 
                             new Vector3(firePoint2.transform.position.x, 
                                         firePoint2.transform.position.y, 
@@ -141,7 +151,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (spriteRenderer.sprite.name == salmonSprite.name)
         {
-            // サーモン
+            // ?T?[????
             SalmonBulletObj(salmonBulletPrefab, 
                             new Vector3(transform.position.x, 
                                         transform.position.y,
@@ -169,7 +179,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (spriteRenderer.sprite.name == ebiSprite.name)
         {
-            // エビ
+            // ?G?r
             EbiBulletObj(ebiBulletPrefab, 
                          new Vector3(firePoint.transform.position.x,
                                      firePoint.transform.position.y,
@@ -186,12 +196,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // シャリ時の攻撃
+    // ?V?????????U??
     void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in normalBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
@@ -204,12 +214,12 @@ public class PlayerController : MonoBehaviour
         Instantiate(bulletPrefab, pos, qua, normalBulletPool);
     }
 
-    // いくら軍艦時の攻撃
+    // ???????R???????U??
     void GetIkuraBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in ikuraBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 3;
@@ -222,7 +232,7 @@ public class PlayerController : MonoBehaviour
         Instantiate(bulletPrefab, pos, qua, ikuraBulletPool);
     }
 
-    // ホタテの攻撃
+    // ?z?^?e???U??
     void HotateShot()
     {
         HotateBulletObj(hotateBulletPrefab, 
@@ -250,7 +260,7 @@ public class PlayerController : MonoBehaviour
 
         foreach (Transform t in hotateBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
@@ -268,12 +278,12 @@ public class PlayerController : MonoBehaviour
         bulletBody.AddForce(shotPos * 200);
     }
 
-    // マグロの攻撃
+    // ?}?O?????U??
     void MaguroBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in maguroBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
@@ -286,12 +296,12 @@ public class PlayerController : MonoBehaviour
         Instantiate(bulletPrefab, pos, qua, maguroBulletPool);
     }
 
-    // サーモンの攻撃
+    // ?T?[???????U??
     void SalmonBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua, Vector3 shotPos)
     {
         foreach (Transform t in salmonBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
@@ -310,12 +320,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // エビの攻撃
+    // ?G?r???U??
     void EbiBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in ebiBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
@@ -359,7 +369,7 @@ public class PlayerController : MonoBehaviour
         ChengeSprite(collision.gameObject);
     }
 
-    // Sprite変更
+    // Sprite???X
     void ChengeSprite(GameObject obj)
     {
         
@@ -415,5 +425,17 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.sprite = sprite;
         AudioManager.instance.PlaySE(5);
         anime.enabled = false;
+    }
+
+    //kuwapon tsuika gameover
+    void GameOver()
+    {
+        gameoverText.SetActive(true);
+        retryText.SetActive(true);
+        returnTittleText.SetActive(true);
+    }
+    void Death()
+    {
+        gameObject.SetActive(false);
     }
 }

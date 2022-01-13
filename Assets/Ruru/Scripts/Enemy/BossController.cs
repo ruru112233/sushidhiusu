@@ -7,10 +7,10 @@ public class BossController : EnemyBase
 
     bool bossMoveFlag = false;
 
-    // 上下移動用
+    // ?????????p
     bool upperFlag = false;
 
-    // 旋回用
+    // ?????p
     bool turningUpFlag = false,
          turningRightFlag = false,
          turningDownFlag = false,
@@ -47,11 +47,11 @@ public class BossController : EnemyBase
         {
             StartCoroutine(BossRoute());
 
-            AudioManager.instance.PlayBGM(0);
+            AudioManager.instance.PlayBGM(8);
 
             if (bossMoveFlag)
             {
-                // 弾の発射
+                // ?e??????
                 
                 if (shotCurrentTime == 0)
                 {
@@ -93,7 +93,7 @@ public class BossController : EnemyBase
 
     }
 
-    // 上下移動
+    // ????????
     void UpDownMoveBoss()
     {
         if (upperFlag)
@@ -106,41 +106,41 @@ public class BossController : EnemyBase
         }
     }
 
-    // 周りぐるぐる
+    // ????????????
     void TurningMove()
     {
         
 
         if (turningUpFlag)
         {
-            Debug.Log("上");
+            Debug.Log("??");
             TurningChenge();
             transform.position += new Vector3(0, bossMoveSpeed * Time.deltaTime, 0);
         }
         else if (turningRightFlag)
         {
-            Debug.Log("右");
+            Debug.Log("?E");
             TurningChenge();
 
             transform.position += new Vector3(bossMoveSpeed * Time.deltaTime, 0, 0);
         }
         else if (turningDownFlag)
         {
-           // Debug.Log("下");
+           // Debug.Log("??");
             TurningChenge();
 
             transform.position -= new Vector3(0, bossMoveSpeed * Time.deltaTime, 0);
         }
         else if (turningLeftFlag)
         {
-            Debug.Log("左");
+            Debug.Log("??");
             TurningChenge();
 
             transform.position -= new Vector3(bossMoveSpeed * Time.deltaTime, 0, 0);
         }
     }
 
-    // ターニングフラグの状態を変更
+    // ?^?[?j???O?t???O???????????X
     void TurningChenge()
     {
         //if (transform.position.x < -5)
@@ -198,12 +198,12 @@ public class BossController : EnemyBase
 
     }
 
-    // 一色線に墨を発射する。
+    // ???F?????n???????????B
     void SumiShot1(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in enemyParm.sumiBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.SetPositionAndRotation(pos, qua);
@@ -220,12 +220,12 @@ public class BossController : EnemyBase
 
     }
 
-    // イカオブジェを出す
+    // ?C?J?I?u?W?F???o??
     void IkaBullet(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in enemyParm.ikaBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.SetPositionAndRotation(pos, qua);

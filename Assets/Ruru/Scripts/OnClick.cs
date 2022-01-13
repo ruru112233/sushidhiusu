@@ -23,9 +23,10 @@ public class OnClick : MonoBehaviour
 
     IEnumerator PushButton(int num)
     {
+        AudioManager.instance.StopMusic();
         AudioManager.instance.PlaySE(12);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         SceneSeni(num);
     }
@@ -36,15 +37,15 @@ public class OnClick : MonoBehaviour
         switch (num)
         {
             case 0:
-                // タイトル
+                // ?^?C?g??
                 SceneManager.LoadScene("TitleScene");
                 break;
             case 1:
-                // ステージシーン
+                // ?X?e?[?W?V?[??
                 SceneManager.LoadScene("StageScene");
                 break;
             case 2:
-                // リスタート
+                // ???X?^?[?g
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 break;
         }

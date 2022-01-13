@@ -45,14 +45,14 @@ public class EnemyBase : MonoBehaviour
     public FishDrop fishDrop;
 
     
-    // 弾の発射位置
+    // ?e?????????u
     protected GameObject firePoint;
 
 
-    // 弾の発射間隔
+    // ?e?????????u
     protected float shotCurrentTime = 0;
 
-    // プレイヤーの位置取得
+    // ?v???C???[?????u????
     private Transform playerPos;
 
     Animator anime;
@@ -82,7 +82,7 @@ public class EnemyBase : MonoBehaviour
     public virtual void Update()
     {
 
-        // 敵の破壊
+        // ?G???j??
         if (EnemyHp <= 0)
         {
             if (!destroyFlag)
@@ -90,7 +90,9 @@ public class EnemyBase : MonoBehaviour
                 if (fishtype == FishType.Boss)
                 {
                     AudioManager.instance.PlaySE(0);
-                    AudioManager.instance.PlayBGM(1);
+                    //AudioManager.instance.PlayBGM(1);
+                    Ending.instance.End();
+
                 }
                 else
                 {
@@ -102,7 +104,7 @@ public class EnemyBase : MonoBehaviour
 
             if (fishDrop == FishDrop.Drop)
             {
-                // アイテムがセットされてたら、ドロップする
+                // ?A?C?e?????Z?b?g???????????A?h???b?v????
                 if (GetDropItemList(fishtype).Count != 0 && !dropFlag)
                 {
                     dropFlag = true;
@@ -135,7 +137,7 @@ public class EnemyBase : MonoBehaviour
             }
             else
             {
-                // 弾の発射
+                // ?e??????
                 if (shotCurrentTime == 0)
                 {
                     ShotBullet();
@@ -173,7 +175,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    // アイテムリストからランダムで配列番号を設定
+    // ?A?C?e?????X?g?????????_?????z????????????
     int RandomItemNo()
     {
         int randNo = Random.Range(0, GetDropItemList(fishtype).Count);
@@ -204,7 +206,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    // 弾の発射
+    // ?e??????
     void ShotBullet()
     {
         if (fishtype != FishType.Hotate)
@@ -231,7 +233,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    // スミ攻撃
+    // ?X?~?U??
     void SumiShot(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         if (GameObject.FindWithTag("Player"))
@@ -243,7 +245,7 @@ public class EnemyBase : MonoBehaviour
 
             foreach (Transform t in enemyParm.sumiBulletPool)
             {
-                // 弾が非アクティブなら使いまわし
+                // ?e?????A?N?e?B?u?????g????????
                 if (!t.gameObject.activeSelf)
                 {
                     t.SetPositionAndRotation(pos, qua);
@@ -273,7 +275,7 @@ public class EnemyBase : MonoBehaviour
 
             foreach (Transform t in enemyParm.enemyBulletPool)
             {
-                // 弾が非アクティブなら使いまわし
+                // ?e?????A?N?e?B?u?????g????????
                 if (!t.gameObject.activeSelf)
                 {
                     t.SetPositionAndRotation(pos, qua);
@@ -293,12 +295,12 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
-    // ホタテの攻撃
+    // ?z?^?e???U??
     void HotateShot1(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
         foreach (Transform t in enemyParm.hotateBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.SetPositionAndRotation(pos, qua);
@@ -319,7 +321,7 @@ public class EnemyBase : MonoBehaviour
     {
         foreach (Transform t in enemyParm.hotateBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.SetPositionAndRotation(pos, qua);
@@ -340,7 +342,7 @@ public class EnemyBase : MonoBehaviour
     {
         foreach (Transform t in enemyParm.hotateBulletPool)
         {
-            // 弾が非アクティブなら使いまわし
+            // ?e?????A?N?e?B?u?????g????????
             if (!t.gameObject.activeSelf)
             {
                 t.SetPositionAndRotation(pos, qua);
@@ -357,7 +359,7 @@ public class EnemyBase : MonoBehaviour
 
     }
 
-    // itemListを返す
+    // itemList??????
     int GetEnemyHp(FishType type)
     {
         int hp = 1;
@@ -409,7 +411,7 @@ public class EnemyBase : MonoBehaviour
         return hp;
     }
 
-    // itemListを返す
+    // itemList??????
     List<GameObject> GetDropItemList(FishType type)
     {
         List<GameObject> objList = new List<GameObject>();
