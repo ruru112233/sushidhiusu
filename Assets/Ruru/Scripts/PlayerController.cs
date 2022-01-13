@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     // 弾のプレハブ
     [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab, maguroBulletPrefab,
-                                salmonBulletPrefab;
+                                salmonBulletPrefab, ebiBulletPrefab;
 
     // 弾の発射位置
     [SerializeField] GameObject firePoint, firePoint2, firePoint3;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     // オブジェクトプール対応
     [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool, maguroBulletPool,
-                               salmonBulletPool;
+                               salmonBulletPool, ebiBulletPool;
 
     // プレイヤーのスプライト
     SpriteRenderer spriteRenderer;
@@ -160,9 +160,22 @@ public class PlayerController : MonoBehaviour
                             Quaternion.Euler(0, 0, 90),
                             new Vector3(0, -1, 0));
         }
+        else if (spriteRenderer.sprite.name == ebiSprite.name)
+        {
+            // エビ
+            EbiBulletObj(ebiBulletPrefab, 
+                         new Vector3(firePoint.transform.position.x,
+                                     firePoint.transform.position.y,
+                                     firePoint.transform.position.z),
+                         Quaternion.identity);
+        }
         else
         {
-            GetNomalBulletObj(bulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+            GetNomalBulletObj(bulletPrefab, 
+                              new Vector3(firePoint.transform.position.x, 
+                                          firePoint.transform.position.y, 
+                                          firePoint.transform.position.z), 
+                              Quaternion.identity);
         }
     }
 
@@ -288,6 +301,24 @@ public class PlayerController : MonoBehaviour
         Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
         bulletBody.AddForce(shotPos * 200);
 
+    }
+
+    // エビの攻撃
+    void EbiBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in ebiBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                return;
+            }
+        }
+
+        Instantiate(bulletPrefab, pos, qua, ebiBulletPool);
     }
 
 
