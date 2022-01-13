@@ -21,6 +21,8 @@ public class BossController : EnemyBase
     float currentActionTime = 0f;
     float actionTime;
 
+    bool bossBgmFlag = false;
+
     enum BulletType
     {
         Normal,
@@ -47,7 +49,11 @@ public class BossController : EnemyBase
         {
             StartCoroutine(BossRoute());
 
-            AudioManager.instance.PlayBGM(8);
+            if (!bossBgmFlag)
+            {
+                AudioManager.instance.PlayBGM(8);
+                bossBgmFlag = true;
+            }
 
             if (bossMoveFlag)
             {
