@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6436463092759128995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6436463092759128994}
+  - component: {fileID: 6436463092759128993}
+  m_Layer: 0
+  m_Name: EnemyParm
+  m_TagString: EnemyParm
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6436463092759128994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436463092759128995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.1816053, y: -0.3970132, z: -4.770336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6436463092759128993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436463092759128995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0c5d61fe36f5841a4795230edf82f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maguroInitHp: 1
+  ikuraInitHp: 1
+  tamagoInitHp: 1
+  salmonInitHp: 2
+  ebiInitHp: 1
+  ikaInitHp: 3
+  takoInitHp: 1
+  hotateInitHp: 1
+  uniInitHp: 1
+  taiInitHp: 1
+  kyuuriInitHp: 1
+  nattoInitHp: 1
+  bossInitHp: 100
+  maguroItemPrefab:
+  - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
+  ikuraItemPrefab:
+  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
+  tamagoItemPrefab:
+  - {fileID: 7403780343126846730, guid: 565464fd9733f0f4d91ad0225c4a7f2a, type: 3}
+  salmonItemPrefab:
+  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
+  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  ebiItemPrefab:
+  - {fileID: 7606517927379001253, guid: 640bbe0d739da74448bea7abecd2ac73, type: 3}
+  ikaItemPrefab:
+  - {fileID: 7606517927379001253, guid: 640bbe0d739da74448bea7abecd2ac73, type: 3}
+  - {fileID: 556571823274584635, guid: b3bb3e8837f1150418e77664cab143fe, type: 3}
+  - {fileID: 876058340721574833, guid: a97b4029dfd22054a82fa0dde052108b, type: 3}
+  - {fileID: 6178827539676885052, guid: 7dc1864cd02d01d46a5c157ebe4f854f, type: 3}
+  - {fileID: 7403780343126846730, guid: 565464fd9733f0f4d91ad0225c4a7f2a, type: 3}
+  takoItemPrefab: []
+  hotateItemPrefab:
+  - {fileID: 9026093652420442914, guid: 750e00662d455fe439e60be0ac0d2c2b, type: 3}
+  uniItemPrefab: []
+  taiItemPrefab: []
+  kyuuriItemPrefab: []
+  nattoItemPrefab: []
+  dropItemPool: {fileID: 0}
+  bulletPrefab: {fileID: 6102915006892167055, guid: 3ef834266dbd6df4c855dfbe1523b28f, type: 3}
+  sumiBullet: {fileID: 5780723763144034426, guid: 86cb30bbe2e9d0943bdf1b07f78f3092, type: 3}
+  ikaBullet: {fileID: 2241363628044797575, guid: 4da6b8fe319b93a48b8767759953624c, type: 3}
+  enemyBulletPool: {fileID: 0}
+  hotateBulletPool: {fileID: 0}
+  sumiBulletPool: {fileID: 0}
+  ikaBulletPool: {fileID: 0}
+  shotSpeed: 15
+  shotTime: 4
