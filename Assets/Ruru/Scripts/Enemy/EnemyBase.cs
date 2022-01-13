@@ -87,7 +87,7 @@ public class EnemyBase : MonoBehaviour
         {
             if (!destroyFlag)
             {
-                AudioManager.instance.PlaySE(3);
+                AudioManager.instance.PlaySE(2);
                 destroyFlag = true;
             }
 
@@ -109,7 +109,6 @@ public class EnemyBase : MonoBehaviour
             anime.SetTrigger("Destroy");
 
             StartCoroutine(EnemyDestroy());
-
         }
 
         if (isGate)
@@ -188,6 +187,11 @@ public class EnemyBase : MonoBehaviour
             Debug.Log(at);
 
             EnemyHp -= at;
+
+            if (EnemyHp > 0)
+            {
+                AudioManager.instance.PlaySE(3);
+            }
         }
     }
 
