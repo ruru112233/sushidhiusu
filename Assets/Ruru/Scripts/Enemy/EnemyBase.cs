@@ -87,7 +87,16 @@ public class EnemyBase : MonoBehaviour
         {
             if (!destroyFlag)
             {
-                AudioManager.instance.PlaySE(2);
+                if (fishtype == FishType.Boss)
+                {
+                    AudioManager.instance.PlaySE(0);
+                    AudioManager.instance.PlayBGM(1);
+                }
+                else
+                {
+                    AudioManager.instance.PlaySE(2);
+                }
+
                 destroyFlag = true;
             }
 
