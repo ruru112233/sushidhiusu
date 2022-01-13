@@ -16,6 +16,8 @@ public class EnemyBase : MonoBehaviour
 
     protected bool isGate = false;
 
+    bool destroyFlag = false;
+
     public enum FishType
     {
         Maguro,
@@ -83,6 +85,12 @@ public class EnemyBase : MonoBehaviour
         // 敵の破壊
         if (EnemyHp <= 0)
         {
+            if (!destroyFlag)
+            {
+                AudioManager.instance.PlaySE(3);
+                destroyFlag = true;
+            }
+
             if (fishDrop == FishDrop.Drop)
             {
                 // アイテムがセットされてたら、ドロップする
@@ -175,6 +183,7 @@ public class EnemyBase : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            
             int at = collision.gameObject.GetComponent<BulletController>().BulletAtPoint;
             Debug.Log(at);
 
@@ -212,63 +221,63 @@ public class EnemyBase : MonoBehaviour
     // スミ攻撃
     void SumiShot(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
-        playerPos = GameObject.FindWithTag("Player").transform;
-        float dis = Vector3.Distance(playerPos.position, pos);
-        Vector2 vec = playerPos.position - pos;
-
-
-        foreach (Transform t in enemyParm.sumiBulletPool)
+        if (GameObject.FindWithTag("Player"))
         {
-            // 弾が非アクティブなら使いまわし
-            if (!t.gameObject.activeSelf)
+            playerPos = GameObject.FindWithTag("Player").transform;
+            float dis = Vector3.Distance(playerPos.position, pos);
+            Vector2 vec = playerPos.position - pos;
+
+
+            foreach (Transform t in enemyParm.sumiBulletPool)
             {
-                t.SetPositionAndRotation(pos, qua);
-                t.gameObject.SetActive(true);
-                GameObject bullet = t.gameObject;
-                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-                bulletRigidbody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
-                return;
+                // 弾が非アクティブなら使いまわし
+                if (!t.gameObject.activeSelf)
+                {
+                    t.SetPositionAndRotation(pos, qua);
+                    t.gameObject.SetActive(true);
+                    GameObject bullet = t.gameObject;
+                    Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                    bulletRigidbody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
+                    return;
+                }
             }
+            GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.sumiBulletPool);
+            Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+            bulletBody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
+
         }
-        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.sumiBulletPool);
-        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
-        bulletBody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
 
     }
 
     void GetNomalBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
     {
-        playerPos = GameObject.FindWithTag("Player").transform;
-        float dis = Vector3.Distance(playerPos.position, pos);
-        Vector2 vec = playerPos.position - pos;
-
-        foreach (Transform t in enemyParm.enemyBulletPool)
+        
+        if (GameObject.FindWithTag("Player"))
         {
-            // 弾が非アクティブなら使いまわし
-            if (!t.gameObject.activeSelf)
+            playerPos = GameObject.FindWithTag("Player").transform;
+            float dis = Vector3.Distance(playerPos.position, pos);
+            Vector2 vec = playerPos.position - pos;
+
+            foreach (Transform t in enemyParm.enemyBulletPool)
             {
-                t.SetPositionAndRotation(pos, qua);
-                t.gameObject.SetActive(true);
-                GameObject bullet = t.gameObject;
-                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
-                bulletRigidbody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
-//                bulletRigidbody.AddForce(transform.up * shotSpeed);
+                // 弾が非アクティブなら使いまわし
+                if (!t.gameObject.activeSelf)
+                {
+                    t.SetPositionAndRotation(pos, qua);
+                    t.gameObject.SetActive(true);
+                    GameObject bullet = t.gameObject;
+                    Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                    bulletRigidbody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
 
-                //t.GetComponent<Rigidbody2D>().velocity = vec;
-                //t.GetComponent<Rigidbody2D>().velocity = new Vector2(1.0f, 2.0f);
-                return;
+                    return;
+                }
             }
+
+            GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.enemyBulletPool);
+            Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+            bulletBody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
+
         }
-
-        //Instantiate(bulletPrefab, pos, qua, enemyBulletPool);
-
-        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, enemyParm.enemyBulletPool);
-        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
-        bulletBody.AddForce(new Vector3(vec.x * enemyParm.shotSpeed, vec.y * enemyParm.shotSpeed, 0));
-
-
-        //bulletBody.AddForce(transform.up * shotSpeed);
-
     }
 
     // ホタテの攻撃

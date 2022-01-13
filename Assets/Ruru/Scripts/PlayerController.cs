@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
         {
             if (shotTime == 0)
             {
+                AudioManager.instance.PlaySE(9);
                 ShotBullet();
             }
 
@@ -62,10 +63,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyUp(KeyCode.V))
+        {
+            shotTime = 0;
+        }
+
         // ゲームオーバーになった時の処理
         if (gameOverFlag)
         {
             Debug.Log("GameOver");
+            gameObject.SetActive(false);
         }
     }
 
@@ -326,9 +333,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet"))
         {
+            AudioManager.instance.PlaySE(6);
             if (spriteRenderer.sprite.name == "Syari_01")
             {
-
                 gameOverFlag = true;
             }
             else
@@ -341,6 +348,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Gate") || collision.gameObject.CompareTag("Iwa"))
         {
+            AudioManager.instance.PlaySE(6);
             gameOverFlag = true;
         }
 
@@ -354,52 +362,40 @@ public class PlayerController : MonoBehaviour
         switch (obj.tag)
         {
             case "Maguro":
-                spriteRenderer.sprite = maguroSprite;
-                anime.enabled = false;
+                CommonSprite(maguroSprite);
                 break;
             case "Ikura":
-                spriteRenderer.sprite = ikuraSprite;
-                anime.enabled = false;
+                CommonSprite(ikuraSprite);
                 break;
             case "Tamago":
-                spriteRenderer.sprite = tamagoSprite;
-                anime.enabled = false;
+                CommonSprite(tamagoSprite);
                 break;
             case "Salmon":
-                spriteRenderer.sprite = salmonSprite;
-                anime.enabled = false;
+                CommonSprite(salmonSprite);
                 break;
             case "Ebi":
-                spriteRenderer.sprite = ebiSprite;
-                anime.enabled = false;
+                CommonSprite(ebiSprite);
                 break;
             case "Ika":
-                spriteRenderer.sprite = ikaSprite;
-                anime.enabled = false;
+                CommonSprite(ikaSprite);
                 break;
             case "Tako":
-                spriteRenderer.sprite = takoSprite;
-                anime.enabled = false;
+                CommonSprite(takoSprite);
                 break;
             case "Hotate":
-                spriteRenderer.sprite = hotateSprite;
-                anime.enabled = false;
+                CommonSprite(hotateSprite);
                 break;
             case "Uni":
-                spriteRenderer.sprite = uniSprite;
-                anime.enabled = false;
+                CommonSprite(uniSprite);
                 break;
             case "Tai":
-                spriteRenderer.sprite = taiSprite;
-                anime.enabled = false;
+                CommonSprite(taiSprite);
                 break;
             case "Kyuuri":
-                spriteRenderer.sprite = kyuuriSprite;
-                anime.enabled = false;
+                CommonSprite(kyuuriSprite);
                 break;
             case "Natto":
-                spriteRenderer.sprite = nattoSprite;
-                anime.enabled = false;
+                CommonSprite(nattoSprite);
                 break;
             case "Syouyusashi":
                 GameManager.instance.syouyusashiCtr.getSyouyuPoint++;
@@ -408,5 +404,12 @@ public class PlayerController : MonoBehaviour
 
         }
 
+    }
+
+    void CommonSprite(Sprite sprite)
+    {
+        spriteRenderer.sprite = sprite;
+        AudioManager.instance.PlaySE(5);
+        anime.enabled = false;
     }
 }
