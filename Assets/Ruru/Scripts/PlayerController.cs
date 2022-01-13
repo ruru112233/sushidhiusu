@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     Animator anime;
 
     // スプライト
-    [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, ebiSprite, ikaSprite, takoSprite,
+    [SerializeField] Sprite maguroSprite, ikuraSprite, salmonSprite, tamagoSprite, tamagoNorinashiSprite, ebiSprite, ikaSprite, takoSprite,
                             hotateSprite, uniSprite, taiSprite, kyuuriSprite, nattoSprite, syariSprite;
 
     // Start is called before the first frame update
@@ -337,6 +337,10 @@ public class PlayerController : MonoBehaviour
             if (spriteRenderer.sprite.name == "Syari_01")
             {
                 gameOverFlag = true;
+            }
+            else if (spriteRenderer.sprite.name == tamagoSprite.name)
+            {
+                spriteRenderer.sprite = tamagoNorinashiSprite;
             }
             else
             {
