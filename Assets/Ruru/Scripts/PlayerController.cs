@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     // 弾のプレハブ
-    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab, maguroBulletPrefab;
+    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab, maguroBulletPrefab,
+                                salmonBulletPrefab;
 
     // 弾の発射位置
     [SerializeField] GameObject firePoint, firePoint2, firePoint3;
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     float shotDistanceTime = 0.3f;
 
     // オブジェクトプール対応
-    [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool, maguroBulletPool;
+    [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool, maguroBulletPool,
+                               salmonBulletPool;
 
     // プレイヤーのスプライト
     SpriteRenderer spriteRenderer;
@@ -104,7 +106,11 @@ public class PlayerController : MonoBehaviour
         if (spriteRenderer.sprite.name == ikuraSprite.name)
         {
             // いくら
-            GetIkuraBulletObj(ikuraBulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
+            GetIkuraBulletObj(ikuraBulletPrefab, 
+                              new Vector3(firePoint.transform.position.x, 
+                                          firePoint.transform.position.y, 
+                                          firePoint.transform.position.z), 
+                              Quaternion.identity);
         }
         else if (spriteRenderer.sprite.name == hotateSprite.name)
         {
@@ -114,9 +120,45 @@ public class PlayerController : MonoBehaviour
         else if (spriteRenderer.sprite.name == maguroSprite.name)
         {
             // マグロ
-            MaguroBulletObj(maguroBulletPrefab, new Vector3(firePoint2.transform.position.x, firePoint2.transform.position.y, firePoint2.transform.position.z), Quaternion.identity);
-            MaguroBulletObj(maguroBulletPrefab, new Vector3(firePoint3.transform.position.x, firePoint3.transform.position.y, firePoint3.transform.position.z), Quaternion.identity);
+            MaguroBulletObj(maguroBulletPrefab, 
+                            new Vector3(firePoint2.transform.position.x, 
+                                        firePoint2.transform.position.y, 
+                                        firePoint2.transform.position.z), 
+                            Quaternion.identity);
+            MaguroBulletObj(maguroBulletPrefab, 
+                            new Vector3(firePoint3.transform.position.x, 
+                                        firePoint3.transform.position.y, 
+                                        firePoint3.transform.position.z), 
+                            Quaternion.identity);
 
+        }
+        else if (spriteRenderer.sprite.name == salmonSprite.name)
+        {
+            // サーモン
+            SalmonBulletObj(salmonBulletPrefab, 
+                            new Vector3(transform.position.x, 
+                                        transform.position.y,
+                                        transform.position.z),
+                            Quaternion.identity,
+                            new Vector3(1, 0, 0));
+            SalmonBulletObj(salmonBulletPrefab,
+                            new Vector3(transform.position.x,
+                                        transform.position.y,
+                                        transform.position.z),
+                            Quaternion.identity,
+                            new Vector3(-1, 0, 0));
+            SalmonBulletObj(salmonBulletPrefab,
+                            new Vector3(transform.position.x,
+                                        transform.position.y,
+                                        transform.position.z),
+                            Quaternion.Euler(0,0,90),
+                            new Vector3(0, 1, 0));
+            SalmonBulletObj(salmonBulletPrefab,
+                            new Vector3(transform.position.x,
+                                        transform.position.y,
+                                        transform.position.z),
+                            Quaternion.Euler(0, 0, 90),
+                            new Vector3(0, -1, 0));
         }
         else
         {
@@ -222,6 +264,30 @@ public class PlayerController : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, pos, qua, maguroBulletPool);
+    }
+
+    // サーモンの攻撃
+    void SalmonBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua, Vector3 shotPos)
+    {
+        foreach (Transform t in salmonBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                GameObject bullet = t.gameObject;
+                Rigidbody2D bulletRigidbody = bullet.GetComponent<Rigidbody2D>();
+                bulletRigidbody.AddForce(shotPos * 200);
+                return;
+            }
+        }
+
+        GameObject bullet2 = (GameObject)Instantiate(bulletPrefab, pos, qua, salmonBulletPool);
+        Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
+        bulletBody.AddForce(shotPos * 200);
+
     }
 
 
