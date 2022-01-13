@@ -47,6 +47,8 @@ public class BossController : EnemyBase
         {
             StartCoroutine(BossRoute());
 
+            AudioManager.instance.PlayBGM(0);
+
             if (bossMoveFlag)
             {
                 // ’e‚Ì”­ŽË
