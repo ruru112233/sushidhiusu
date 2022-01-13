@@ -8,17 +8,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed;
 
     // 弾のプレハブ
-    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab;
+    [SerializeField] GameObject bulletPrefab, ikuraBulletPrefab, hotateBulletPrefab, maguroBulletPrefab;
 
     // 弾の発射位置
-    [SerializeField] GameObject firePoint;
+    [SerializeField] GameObject firePoint, firePoint2, firePoint3;
 
     // 弾の発射間隔
     float shotTime = 0;
     float shotDistanceTime = 0.3f;
 
     // オブジェクトプール対応
-    [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool;
+    [SerializeField] Transform normalBulletPool, ikuraBulletPool, hotateBulletPool, maguroBulletPool;
 
     // プレイヤーのスプライト
     SpriteRenderer spriteRenderer;
@@ -103,11 +103,20 @@ public class PlayerController : MonoBehaviour
 
         if (spriteRenderer.sprite.name == ikuraSprite.name)
         {
+            // いくら
             GetIkuraBulletObj(ikuraBulletPrefab, new Vector3(firePoint.transform.position.x, firePoint.transform.position.y, firePoint.transform.position.z), Quaternion.identity);
         }
         else if (spriteRenderer.sprite.name == hotateSprite.name)
         {
+            // ホタテ
             HotateShot();
+        }
+        else if (spriteRenderer.sprite.name == maguroSprite.name)
+        {
+            // マグロ
+            MaguroBulletObj(maguroBulletPrefab, new Vector3(firePoint2.transform.position.x, firePoint2.transform.position.y, firePoint2.transform.position.z), Quaternion.identity);
+            MaguroBulletObj(maguroBulletPrefab, new Vector3(firePoint3.transform.position.x, firePoint3.transform.position.y, firePoint3.transform.position.z), Quaternion.identity);
+
         }
         else
         {
@@ -183,7 +192,6 @@ public class PlayerController : MonoBehaviour
             if (!t.gameObject.activeSelf)
             {
                 t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
-                t.gameObject.GetComponent<BulletController>().Speed = 0;
                 t.SetPositionAndRotation(pos, qua);
                 t.gameObject.SetActive(true);
                 GameObject bullet = t.gameObject;
@@ -197,6 +205,25 @@ public class PlayerController : MonoBehaviour
         Rigidbody2D bulletBody = bullet2.GetComponent<Rigidbody2D>();
         bulletBody.AddForce(shotPos * 200);
     }
+
+    // マグロの攻撃
+    void MaguroBulletObj(GameObject bulletPrefab, Vector3 pos, Quaternion qua)
+    {
+        foreach (Transform t in maguroBulletPool)
+        {
+            // 弾が非アクティブなら使いまわし
+            if (!t.gameObject.activeSelf)
+            {
+                t.gameObject.GetComponent<BulletController>().BulletAtPoint = 1;
+                t.SetPositionAndRotation(pos, qua);
+                t.gameObject.SetActive(true);
+                return;
+            }
+        }
+
+        Instantiate(bulletPrefab, pos, qua, maguroBulletPool);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
