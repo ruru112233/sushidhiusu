@@ -23,7 +23,7 @@ public class OnClick : MonoBehaviour
 
     IEnumerator PushButton(int num)
     {
-        AudioManager.instance.PlayBGM(4);
+        AudioManager.instance.PlaySE(12);
 
         yield return new WaitForSeconds(0.5f);
 
