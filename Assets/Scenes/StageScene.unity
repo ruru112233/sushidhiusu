@@ -1556,7 +1556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6436463092759128993, guid: c35775906d53860439d526140ac654a3, type: 3}
       propertyPath: bossInitHp
-      value: 60
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 6436463092759128993, guid: c35775906d53860439d526140ac654a3, type: 3}
       propertyPath: dropItemPool
