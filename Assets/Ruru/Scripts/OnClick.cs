@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class OnClick : MonoBehaviour
 {
+    public static OnClick instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+
+        }
+
+    }
+
     public void TitleSceneButton()
     {
         StartCoroutine(PushButton(0));
@@ -19,6 +30,11 @@ public class OnClick : MonoBehaviour
     public void ReTryButton()
     {
         StartCoroutine(PushButton(2));
+    }
+
+    public void PulologueButton()
+    {
+        StartCoroutine(PushButton(3));
     }
 
     IEnumerator PushButton(int num)
@@ -47,6 +63,10 @@ public class OnClick : MonoBehaviour
             case 2:
                 // ???X?^?[?g
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                break;
+            case 3:
+                
+                SceneManager.LoadScene("Pulologue");
                 break;
         }
     }
