@@ -151,7 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -703,7 +703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 5
   xPos: 4
   yPos: 2

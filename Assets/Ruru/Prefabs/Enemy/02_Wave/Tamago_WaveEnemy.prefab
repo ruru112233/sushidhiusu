@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 2
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 1
   waveSpeed: 2.5
 --- !u!95 &2763247385702463203

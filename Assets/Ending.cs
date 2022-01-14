@@ -25,12 +25,17 @@ public class Ending : MonoBehaviour
     {
         Debug.Log("GameClear");
         clearText.SetActive(true);
-        AudioManager.instance.PlayBGM(3);
+        
         player.GetComponent<PlayerController>().enabled = false;
         player.GetComponent<BoxCollider2D>().enabled = false;
-        Invoke("ToEndScene", 8);
+        Invoke("PlayEnd",3);
+        Invoke("ToEndScene", 11);
 
 
+    }
+    void PlayEnd()
+    {
+        AudioManager.instance.PlayBGM(3);
     }
     void ToEndScene()
     {

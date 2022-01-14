@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 4
   distanceTime2: 6
   xPos: 4
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 4
   distanceTime2: 6
   xPos: 4
@@ -690,7 +690,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 0
-  fishDrop: 0
+  fishDrop: 1
   distanceTime: 4
   distanceTime2: 6
   xPos: 4

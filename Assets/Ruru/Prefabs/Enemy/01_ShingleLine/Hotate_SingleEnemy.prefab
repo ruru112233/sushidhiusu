@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyParm: {fileID: 0}
   fishtype: 7
-  fishDrop: 0
+  fishDrop: 1
 --- !u!58 &6968267746451618100
 CircleCollider2D:
   m_ObjectHideFlags: 0

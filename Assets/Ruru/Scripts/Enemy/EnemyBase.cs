@@ -81,7 +81,7 @@ public class EnemyBase : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-
+        
         // ?G???j??
         if (EnemyHp <= 0)
         {
@@ -91,7 +91,7 @@ public class EnemyBase : MonoBehaviour
                 {
                     AudioManager.instance.PlaySE(0);
                     //AudioManager.instance.PlayBGM(1);
-                    Ending.instance.End();
+                    BossDestroy();
 
                 }
                 else
@@ -459,6 +459,9 @@ public class EnemyBase : MonoBehaviour
 
         return objList;
     }
-
+    void BossDestroy()
+    {
+        Ending.instance.End();
+    }
     
 }
